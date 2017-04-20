@@ -2,7 +2,7 @@
     "name": "manuel.garcia/string-validator",
     "description": "Validate a string",
     "require": {
-        "php": "5.6"
+        "php": ">=5.6"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.1"

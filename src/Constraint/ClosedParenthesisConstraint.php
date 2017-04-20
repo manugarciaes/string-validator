@@ -52,9 +52,8 @@ class ClosedParenthesisConstraint implements ConstraintInterface
     }
 
     /**
-     * Calculate position of open parenthesis
-     * and closed and get a value, if a parenthesis is bad formed
-     * closed are more bigger
+     * Calculate position of open parenthesis and closed
+     * Sum positions, always closed position are bigger than open
      * @param string $string
      * @param string $search
      * @return int

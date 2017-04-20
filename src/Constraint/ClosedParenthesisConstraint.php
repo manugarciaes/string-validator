@@ -33,11 +33,16 @@ class ClosedParenthesisConstraint implements ConstraintInterface
             return false;
         }
 
-        $positionsOpen = $this->getCountPosition($string, '(');
-        $positionsClosed = $this->getCountPosition($string, ')');
-
-        if ($positionsOpen > $positionsClosed) {
-            return false;
+        $count = 0;
+        foreach (str_split($string) as $letter) {
+            if ($letter == '(') {
+                $count++;
+            } elseif ($letter == ')') {
+                $count--;
+            }
+            if ($count < 0) {
+                return false;
+            }
         }
 
         return true;
@@ -50,27 +55,4 @@ class ClosedParenthesisConstraint implements ConstraintInterface
     {
         return "Mismatched Parenthesis";
     }
-
-    /**
-     * Calculate position of open parenthesis and closed
-     * Sum positions, always closed position are bigger than open
-     * @param string $string
-     * @param string $search
-     * @return int
-     */
-    private function getCountPosition($string, $search)
-    {
-        $lastPosition = 0;
-        $positions = 0;
-        while (($lastPosition = strpos($string, $search, $lastPosition)) !== false) {
-            $positions += intval($lastPosition);
-            $lastPosition++;
-            if ($lastPosition > strlen($string)) {
-                break;
-            }
-        }
-
-        return $positions;
-    }
-
 }

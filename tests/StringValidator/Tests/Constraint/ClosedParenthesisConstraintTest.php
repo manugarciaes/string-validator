@@ -22,12 +22,14 @@ class ClosedParenthesisConstraintTest extends \PHPUnit_Framework_TestCase
     public function validateProvider()
     {
         return [
+            ['hola amigo', true],
             ['hola (amigo)', true],
             ['como estas (tu y tu familia (y el perro))', true],
             ['como estas (tu y tu familia (y el perro)', false],
             ['como estas (tu y tu familia y el perro))', false],
             ['como estas (tu y tu familia (((y el perro))', false],
             ['como estas (tu y tu familia ()()((())((((y el perro))', false],
+            ['como estas tu y tu familia (y el perro)))(', false],
         ];
     }
 }

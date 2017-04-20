@@ -26,7 +26,21 @@ class ClosedParenthesisConstraint implements ConstraintInterface
      */
     public function validate($string)
     {
-        // TODO: Implement validate() method.
+        $open = substr_count($string, '(');
+        $closed = substr_count($string, ')');
+
+        if ($open != $closed) {
+            return false;
+        }
+
+        $positionsOpen = $this->getCountPosition($string, '(');
+        $positionsClosed = $this->getCountPosition($string, ')');
+
+        if ($positionsOpen > $positionsClosed) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -35,6 +49,29 @@ class ClosedParenthesisConstraint implements ConstraintInterface
     public function getMessage()
     {
         return "Mismatched Parenthesis";
+    }
+
+    /**
+     * Calculate position of open parenthesis
+     * and closed and get a value, if a parenthesis is bad formed
+     * closed are more bigger
+     * @param string $string
+     * @param string $search
+     * @return int
+     */
+    private function getCountPosition($string, $search)
+    {
+        $lastPosition = 0;
+        $positions = 0;
+        while (($lastPosition = strpos($string, $search, $lastPosition)) !== false) {
+            $positions += intval($lastPosition);
+            $lastPosition++;
+            if ($lastPosition > strlen($string)) {
+                break;
+            }
+        }
+
+        return $positions;
     }
 
 }

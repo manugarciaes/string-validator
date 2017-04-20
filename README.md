@@ -1,6 +1,9 @@
 # String validator
-Usage:
 
+1) Composer install
+
+Usage:
+```
 <?php
    
    $myValidator = new Validator();
@@ -10,3 +13,4 @@ Usage:
    
    // return true or exception
    $myValidator->isValid('My Text');
+```

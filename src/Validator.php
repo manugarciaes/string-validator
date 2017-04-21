@@ -12,6 +12,7 @@
  * @author Manu Garcia <manugarciaes@gmail.com>
  */
 namespace stringValidator;
+
 use stringValidator\Constraint\ConstraintInterface;
 use stringValidator\Exception\ValidatorException;
 
@@ -26,6 +27,9 @@ class Validator implements ValidatorInterface
      */
     private $constraints;
 
+    /**
+     * Validator constructor.
+     */
     public function __construct()
     {
         $this->constraints = [];
@@ -52,6 +56,10 @@ class Validator implements ValidatorInterface
         return true;
     }
 
+    /**
+     * @param ConstraintInterface $constraint
+     * @return $this
+     */
     public function addConstraint(ConstraintInterface $constraint)
     {
         $this->constraints[] = $constraint;

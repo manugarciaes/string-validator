@@ -12,6 +12,7 @@
  * @author Manu Garcia <manugarciaes@gmail.com>
  */
 namespace stringValidator;
+
 use stringValidator\Constraint\ConstraintInterface;
 
 /**
@@ -21,7 +22,7 @@ use stringValidator\Constraint\ConstraintInterface;
 interface ValidatorInterface
 {
     /**
-     * @param $string
+     * @param string $string
      * @return bool
      */
     public function isValid($string);

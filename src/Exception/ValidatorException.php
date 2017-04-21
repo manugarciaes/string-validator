@@ -19,6 +19,10 @@ namespace stringValidator\Exception;
  */
 class ValidatorException extends \Exception
 {
+    /**
+     * ValidatorException constructor.
+     * @param string $message
+     */
     public function __construct($message)
     {
         parent::__construct($message);
